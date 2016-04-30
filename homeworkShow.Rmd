@@ -1,0 +1,34 @@
+---
+title: "Big_homework"
+author: "Yolanda"
+date: "April 30th, 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Peptides Binding Experiment
+
+This presentation shows the binding affinity alteration of the peptide **\'RSPPDG\'** when each position is replaced by other amino acids. Original assay and data are provided by <http://www.sciencedirect.com/science/article/pii/S009286741101350X>.
+
+
+## Heatmap Plots
+Heatmap is based on **gplots**.
+```{r}
+library(gplots, quietly=TRUE, warn.conflicts=FALSE)
+
+cname <- c('R','S','P','P','D','G')
+rname <- c('P','G','A','V','L','I','M','C','S','T','R','K','H','D','E','N','Q','W','F','Y')
+
+act <- read.table('dataTable.txt', row.names=rname)
+act <- as.matrix(act)
+
+hm <- heatmap(act, Rowv=NA, Colv=NA, labCol=cname, col=heat.colors(120))
+```
+
+The darkness represents bindning affinity.
+
+
+
